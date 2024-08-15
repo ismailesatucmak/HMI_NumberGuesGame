@@ -1,0 +1,931 @@
+﻿800:480;2
+<?xml version="1.0" encoding="utf-8"?>
+<AirPanelPC>
+  <Controls ID="Options">
+    <DeviceComPort>
+    </DeviceComPort>
+    <DeviceBautRate>115200</DeviceBautRate>
+    <UploadInterface>ttl</UploadInterface>
+    <ofs>Screen1</ofs>
+    <StartVideoStorage>Flash</StartVideoStorage>
+  </Controls>
+  <Controls ID="Screen">
+    <OnStart>
+    </OnStart>
+    <Functions>
+    </Functions>
+    <BgColor>-16777216</BgColor>
+    <Name>Screen1</Name>
+    <Rotate>Horizontal</Rotate>
+    <Background_Image>
+    </Background_Image>
+    <BackgroundPictureHex>
+    </BackgroundPictureHex>
+  </Controls>
+  <Controls ID="EVariable">
+    <name>EVar5</name>
+    <Left>157</Left>
+    <Top>60</Top>
+    <Data>
+    </Data>
+    <Type>int</Type>
+    <Modifiers>Private</Modifiers>
+  </Controls>
+  <Controls ID="EVariable">
+    <name>Message</name>
+    <Left>256</Left>
+    <Top>8</Top>
+    <Data>
+    </Data>
+    <Type>String</Type>
+    <Modifiers>Public</Modifiers>
+  </Controls>
+  <Controls ID="EVariable">
+    <name>ReturnPage</name>
+    <Left>206</Left>
+    <Top>7</Top>
+    <Data>
+    </Data>
+    <Type>String</Type>
+    <Modifiers>Public</Modifiers>
+  </Controls>
+  <Controls ID="EVariable">
+    <name>EVar4</name>
+    <Left>157</Left>
+    <Top>6</Top>
+    <Data>0</Data>
+    <Type>int</Type>
+    <Modifiers>Private</Modifiers>
+  </Controls>
+  <Controls ID="EVariable">
+    <name>EVar3</name>
+    <Left>106</Left>
+    <Top>10</Top>
+    <Data>
+    </Data>
+    <Type>String</Type>
+    <Modifiers>Private</Modifiers>
+  </Controls>
+  <Controls ID="EVariable">
+    <name>EVar2</name>
+    <Left>52</Left>
+    <Top>7</Top>
+    <Data>
+    </Data>
+    <Type>int</Type>
+    <Modifiers>Private</Modifiers>
+  </Controls>
+  <Controls ID="EVariable">
+    <name>EVar1</name>
+    <Left>0</Left>
+    <Top>11</Top>
+    <Data>
+    </Data>
+    <Type>int</Type>
+    <Modifiers>Private</Modifiers>
+  </Controls>
+  <Controls ID="EShape">
+    <name>EShape1</name>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Left>19</Left>
+    <Top>16</Top>
+    <Width>391</Width>
+    <Height>325</Height>
+    <Locked>False</Locked>
+    <AutoSize>False</AutoSize>
+    <Order />
+    <OnUp>#include "stk.h"
+#include "stdio.h"
+
+
+int dataint;
+VarGet("EVar1" ,&amp;dataint);
+int dataint2;
+VarGet("EVar2" ,&amp;dataint2);
+char data1[100];
+VarGet("EVar3",data1);
+
+
+
+    
+if(dataint2 &lt; dataint)
+{
+    LabelSet("ELabel1","Visible","1");
+}
+
+
+else if(dataint2 &gt; dataint)
+{
+    LabelSet("ELabel2","Visible","1");
+}
+
+else
+{
+    LabelSet("ELabel3","Visible","1");
+}
+
+</OnUp>
+    <OnDown>#include "stk.h"
+#include "stdio.h"
+
+int q;
+VarGet("EVar4",&amp;q);
+q++;
+VarSeti("EVar4",q);
+char data4[20];
+int i;
+char data[100];
+char LabelData[100];
+
+LabelGet("ELabel15" , "text", LabelData );
+KeypadNumExt("",data,30000,3);
+LabelSets("ELabel15" ,data );
+Convert_StringToInt(data,&amp;i);
+VarSet("EVar2" , &amp;i);
+VarSet("EVar3" ,data);
+
+
+
+sprintf(data4,"%d^%s",q,data);
+LabelSets("ELabel18",data4);
+ListViewSet("List1","insert",data4);
+
+LabelSet("ELabel1" ,"Visible" ,"0" );
+
+LabelSet("ELabel2" ,"Visible" ,"0" );
+
+LabelSet("ELabel3" ,"Visible" ,"0" );
+
+
+</OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>#include "stk.h"
+#include "stdio.h"
+
+int no;
+
+VarGet("EVar4",&amp;no);
+
+
+
+char noch[200];
+Convert_IntToString(no,noch);
+LabelSet("ELabel16","Text",noch);
+
+</OnPress>
+  </Controls>
+  <Controls ID="EButton">
+    <name>tut</name>
+    <Left>450</Left>
+    <Top>17</Top>
+    <Width>120</Width>
+    <Height>60</Height>
+    <TextAligment>Center</TextAligment>
+    <Locked>False</Locked>
+    <Caption>Sayı Tut</Caption>
+    <SoundOnOff>False</SoundOnOff>
+    <SoundName>Sound1</SoundName>
+    <SoundVolume>40</SoundVolume>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>10</FontSize>
+    <Font_Color>-16777216</Font_Color>
+    <Visible>True</Visible>
+    <VisibleDesing>True</VisibleDesing>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Color>-1</Color>
+    <ColorTo>-16728065</ColorTo>
+    <Press_Color>-1</Press_Color>
+    <Press_ColorTo>-4144960</Press_ColorTo>
+    <Gradient>Top to Bottom</Gradient>
+    <Static>False</Static>
+    <Pen_Color>-16777216</Pen_Color>
+    <Pen_Width>1</Pen_Width>
+    <Effect>0</Effect>
+    <EffectTime>100</EffectTime>
+    <Placement>1</Placement>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>#include "stk.h"
+#include "stdio.h"
+
+
+int att = 0;
+VarSeti("EVar5",att);
+
+
+
+char noch[200];
+Convert_IntToString(att,noch);
+LabelSet("ELabel16","Text",noch);
+
+ListViewSet("List1","Row0",noch);
+ListViewSet("List1","Row1",noch);</OnUp>
+    <OnDown>#include "stk.h"
+#include "stdio.h"
+#include "time.h"
+#include "stdlib.h"
+
+
+//srand(time(null));
+
+int rastgelesayi = rand()%1000+1;
+
+VarSet("EVar1" , &amp;rastgelesayi);
+
+char yaz[100];
+char labelyaz[100];
+Convert_IntToString(rastgelesayi,yaz);
+LabelGet( "ELabel19","text" ,labelyaz );
+LabelSets( "ELabel19",yaz );
+
+LabelSet("ELabel20","Visible","1");
+</OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel1</name>
+    <Left>420</Left>
+    <Top>108</Top>
+    <Locked>False</Locked>
+    <Caption>Daha Büyük Bir Sayı Giriniz </Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>14</FontSize>
+    <Font_Color>-29696</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>False</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel2</name>
+    <Left>420</Left>
+    <Top>130</Top>
+    <Locked>False</Locked>
+    <Caption>Daha Küçük Bir Sayı Giriniz</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>14</FontSize>
+    <Font_Color>-1468806</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>False</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel3</name>
+    <Left>421</Left>
+    <Top>155</Top>
+    <Locked>False</Locked>
+    <Caption>Tebrikler Doğru Cevap :D</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>14</FontSize>
+    <Font_Color>-8388864</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>False</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel4</name>
+    <Left>625</Left>
+    <Top>257</Top>
+    <Locked>False</Locked>
+    <Caption>
+    </Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>14</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel5</name>
+    <Left>424</Left>
+    <Top>195</Top>
+    <Locked>False</Locked>
+    <Caption>Girilen Sayı:</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>14</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel6</name>
+    <Left>675</Left>
+    <Top>397</Top>
+    <Locked>False</Locked>
+    <Caption>
+    </Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>8</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel7</name>
+    <Left>427</Left>
+    <Top>382</Top>
+    <Locked>False</Locked>
+    <Caption>tahmin edilecek sayı:</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>10</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>False</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="EButton">
+    <name>EButton2</name>
+    <Left>15</Left>
+    <Top>374</Top>
+    <Width>120</Width>
+    <Height>60</Height>
+    <TextAligment>Center</TextAligment>
+    <Locked>False</Locked>
+    <Caption>Sıfırla</Caption>
+    <SoundOnOff>False</SoundOnOff>
+    <SoundName>Sound1</SoundName>
+    <SoundVolume>40</SoundVolume>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>10</FontSize>
+    <Font_Color>-16777216</Font_Color>
+    <Visible>True</Visible>
+    <VisibleDesing>True</VisibleDesing>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Color>-1</Color>
+    <ColorTo>-16728065</ColorTo>
+    <Press_Color>-1</Press_Color>
+    <Press_ColorTo>-4144960</Press_ColorTo>
+    <Gradient>Top to Bottom</Gradient>
+    <Static>False</Static>
+    <Pen_Color>-16777216</Pen_Color>
+    <Pen_Width>1</Pen_Width>
+    <Effect>0</Effect>
+    <EffectTime>100</EffectTime>
+    <Placement>1</Placement>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>#include "stk.h"
+#include "stdio.h"
+
+LabelSet("ELabel1" ,"Visible" ,"0" );
+
+LabelSet("ELabel2" ,"Visible" ,"0" );
+
+LabelSet("ELabel3" ,"Visible" ,"0" );
+
+LabelSet("ELabel19","Visible","0");
+
+LabelSet("ELabel7","Visible","0");
+
+LabelSet("ELabel15","Text","0");
+
+LabelSet("ELabel18","Text","0");
+
+VarSet("ReturnPage","Screen1");
+ChangeScreenSet("correct");
+
+int att = 0;
+char noch[200];
+Convert_IntToString(att,noch);
+LabelSet("ELabel16","Text",noch);
+
+ListViewSet("List1","Row0",noch);
+ListViewSet("List1","Row1",noch);
+
+</OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel11</name>
+    <Left>28</Left>
+    <Top>24</Top>
+    <Locked>False</Locked>
+    <Caption>1 ile 1000 Arasında Rastgele Sayıyı Bulma</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>14</FontSize>
+    <Font_Color>-65536</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="EButton">
+    <name>EButton3</name>
+    <Left>295</Left>
+    <Top>374</Top>
+    <Width>120</Width>
+    <Height>60</Height>
+    <TextAligment>Center</TextAligment>
+    <Locked>False</Locked>
+    <Caption>Cevabı Gör</Caption>
+    <SoundOnOff>False</SoundOnOff>
+    <SoundName>Sound1</SoundName>
+    <SoundVolume>40</SoundVolume>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>10</FontSize>
+    <Font_Color>-16777216</Font_Color>
+    <Visible>True</Visible>
+    <VisibleDesing>True</VisibleDesing>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Color>-1</Color>
+    <ColorTo>-16728065</ColorTo>
+    <Press_Color>-1</Press_Color>
+    <Press_ColorTo>-4144960</Press_ColorTo>
+    <Gradient>Top to Bottom</Gradient>
+    <Static>False</Static>
+    <Pen_Color>-16777216</Pen_Color>
+    <Pen_Width>1</Pen_Width>
+    <Effect>0</Effect>
+    <EffectTime>100</EffectTime>
+    <Placement>1</Placement>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>#include "stk.h"
+#include "stdio.h"
+
+LabelSet("ELabel7" ,"Visible" , "1");
+LabelSet("ELabel19" ,"Visible" ,"1" );</OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel13</name>
+    <Left>39</Left>
+    <Top>163</Top>
+    <Locked>False</Locked>
+    <Caption> Sayı Girmek İçin Tıklayınız</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>20</FontSize>
+    <Font_Color>-4144960</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel14</name>
+    <Left>418</Left>
+    <Top>85</Top>
+    <Locked>False</Locked>
+    <Caption>Bilgilendirme Panosu</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>16</FontSize>
+    <Font_Color>-3308225</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel15</name>
+    <Left>540</Left>
+    <Top>201</Top>
+    <Locked>False</Locked>
+    <Caption>000</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>8</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>True</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="EListView">
+    <name>List1</name>
+    <Left>627</Left>
+    <Top>184</Top>
+    <Locked>False</Locked>
+    <Enabled>True</Enabled>
+    <Visible>True</Visible>
+    <VisibleDesing>True</VisibleDesing>
+    <Header_BackGround_Color>-16777216</Header_BackGround_Color>
+    <Header_Font_Color>-65536</Header_Font_Color>
+    <Caption>600</Caption>
+    <Header_Font_Size>16</Header_Font_Size>
+    <Header_Height>50</Header_Height>
+    <Header_List>No^Girilen</Header_List>
+    <Header_List_Size>50^100</Header_List_Size>
+    <Header_Type>int^str</Header_Type>
+    <Grid_Vis>True</Grid_Vis>
+    <Enable_Motion>True</Enable_Motion>
+    <Grid_Font>Roboto</Grid_Font>
+    <Grid_Font_Size>16</Grid_Font_Size>
+    <Grid_Font_Color>-65536</Grid_Font_Color>
+    <BackGround_Color>-16777216</BackGround_Color>
+    <Selected_Item_Color>-16776961</Selected_Item_Color>
+    <List_File>
+    </List_File>
+    <List_File_Data>
+    </List_File_Data>
+    <Enable_Sort>1</Enable_Sort>
+    <Width>160</Width>
+    <Height>240</Height>
+    <Order />
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel16</name>
+    <Left>544</Left>
+    <Top>224</Top>
+    <Locked>False</Locked>
+    <Caption>00</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>8</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>True</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel17</name>
+    <Left>425</Left>
+    <Top>222</Top>
+    <Locked>False</Locked>
+    <Caption>Deneme sayısı:</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>11</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel18</name>
+    <Left>426</Left>
+    <Top>251</Top>
+    <Locked>False</Locked>
+    <Caption>000</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>8</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>True</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel19</name>
+    <Left>439</Left>
+    <Top>411</Top>
+    <Locked>False</Locked>
+    <Caption>000</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>8</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>False</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+  <Controls ID="ELabel">
+    <name>ELabel20</name>
+    <Left>595</Left>
+    <Top>19</Top>
+    <Locked>False</Locked>
+    <Caption>Sayı Tutuldu.</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontName2>
+    </FontName2>
+    <FontType>System Font</FontType>
+    <FontSize>12</FontSize>
+    <Font_Color>-1</Font_Color>
+    <TextAligment>Start</TextAligment>
+    <Visible>False</Visible>
+    <Active>True</Active>
+    <Opacity>100</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+    <OnUp>
+    </OnUp>
+    <OnDown>
+    </OnDown>
+    <OnClick>
+    </OnClick>
+    <OnPress>
+    </OnPress>
+  </Controls>
+</AirPanelPC>
+~SCREEN:Screen1~FSCREEN:
+<?xml version="1.0" encoding="utf-8"?>
+<AirPanelPC>
+  <Controls ID="Options">
+    <DeviceComPort>
+    </DeviceComPort>
+    <DeviceBautRate>115200</DeviceBautRate>
+    <UploadInterface>ttl</UploadInterface>
+    <ofs>Screen1</ofs>
+    <StartVideoStorage>Flash</StartVideoStorage>
+  </Controls>
+  <Controls ID="Screen">
+    <OnStart>
+    </OnStart>
+    <Functions>
+    </Functions>
+    <BgColor>-133658</BgColor>
+    <Name>correct</Name>
+    <Rotate>Horizontal</Rotate>
+    <Background_Image>
+    </Background_Image>
+    <BackgroundPictureHex>
+    </BackgroundPictureHex>
+  </Controls>
+  <Controls ID="ETimer">
+    <name>ETimer1</name>
+    <Left>51</Left>
+    <Top>45</Top>
+    <Interval>4000</Interval>
+    <Enable>True</Enable>
+    <event>#include "stk.h"
+
+char data[100];
+
+VarGet("ReturnPage",data);
+
+ChangeScreenSet(data);</event>
+    <Modifiers>Private</Modifiers>
+  </Controls>
+  <Controls ID="ELabelBox">
+    <name>ELabelBox3</name>
+    <Width>600</Width>
+    <Height>200</Height>
+    <Left>100</Left>
+    <Top>200</Top>
+    <Locked>False</Locked>
+    <Caption>Uygulama Sıfırlandı.</Caption>
+    <keyboard>None</keyboard>
+    <FontName>Roboto</FontName>
+    <FontSize>24</FontSize>
+    <Font_Color>-65536</Font_Color>
+    <TextAligment>Center</TextAligment>
+    <Visible>True</Visible>
+    <Active>True</Active>
+    <Opacity>20</Opacity>
+    <Static>False</Static>
+    <Tag>255</Tag>
+    <Order />
+  </Controls>
+</AirPanelPC>
+~SCREEN:correct~FSCREEN:
